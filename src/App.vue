@@ -1,35 +1,21 @@
 <template>
   <b-overlay>
-    <div class="mycards">
-      <div>
-        <b-card style="border: 1px solid red;" v-for="(item, index) in items" :key="index">
-          <p>{{ item.name }}</p>
+    <div>
+      <div class="mycards">
+        <b-card class="cards" v-for="(item, index) in items" :key="index">
+         <h4 class="text-center">{{ item.name }}</h4>
         </b-card>
       </div>
     </div>
   </b-overlay>
-  <!-- <div>
-    <ul>
-      <li v-for="(item, index) in items" :key="index">{{ item.name }}</li>
-    </ul>
-  </div> -->
 </template>
 
 <script>
 import PokemonService from "@/services/poke.service";
-// import {
-//   BOverlay,
-//   BCard,
-//   BRow,
-//   BCol,
-// } from "bootstrap-vue";
+
 export default {
   name: "App",
   components: {
-    // BOverlay,
-    // BCard,
-    // BRow,
-    // BCol
   },
 
   data() {
@@ -49,13 +35,17 @@ export default {
 <style scoped>
 .mycards {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: baseline;
-  align-content: space-evenly;
+  justify-content: space-between;
   width: 100%;
+}
 
+.cards {
+  width: 24%;
+  margin-top: 10px;
+  margin-left: 8px;
+  margin-right: 8px;
+  height: 200px;
 }
 
 #app {
