@@ -1,19 +1,29 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ul>
+      <li v-for="(item, index) in items" :key="index">{{ item.name }}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PokemonService from "@/services/poke.service";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: {},
+  data() {
+    return {
+      items: [],
+    };
+  },
+  created() {
+    PokemonService.Get().then((res) => {
+      console.log(res);
+      this.items = res.data.results;
+    });
+  },
+};
 </script>
 
 <style>
